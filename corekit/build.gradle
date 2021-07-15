@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
+        targetCompatibility rootProject.ext.targetCompatibilityVersion
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutines"
+
+    api "androidx.core:core-ktx:$axCoreKtx"
+    api "androidx.fragment:fragment-ktx:$axFragment"
+    api "androidx.appcompat:appcompat:$axAppcompat"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$axLifecycle"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$axLifecycle"
+    api "androidx.recyclerview:recyclerview:$axRecyclerview"
+    api "androidx.constraintlayout:constraintlayout:$axConstraintlayout"
+
+    api "com.google.android.material:material:$material"
+    api "com.google.code.gson:gson:$gson"
+
+    api "com.squareup.retrofit2:retrofit:$retrofit"
+    api "com.squareup.retrofit2:converter-gson:$retrofit"
+}

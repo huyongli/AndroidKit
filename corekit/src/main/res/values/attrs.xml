@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="offset_tag" type="id"/>
+    <declare-styleable name="RatioView">
+        <attr name="heightRatio" format="float" />
+    </declare-styleable>
+    <declare-styleable name="BannerView">
+        <attr name="indicatorSpace" format="dimension" />
+        <attr name="indicatorNormalDrawable" format="reference" />
+        <attr name="indicatorSelectDrawable" format="reference" />
+        <attr name="indicatorSize" format="dimension" />
+        <attr name="indicatorMarginBottom" format="dimension" />
+    </declare-styleable>
+</resources>
