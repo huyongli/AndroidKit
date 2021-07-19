@@ -22,10 +22,12 @@ object Navigator {
     }
 
     fun isCanNavigation(url: String): Boolean {
+        verifyRouteTable()
         return isCanNavigation(url.toRouteUrl(routeTable.schemaHost))
     }
 
     fun isCanNavigation(uri: Uri): Boolean {
+        verifyRouteTable()
         return routeTable.isRegistered(uri.getUriPath())
     }
 
@@ -45,6 +47,7 @@ object Navigator {
             LHLogKit.e("navigation failure, because context is null")
             throw IllegalArgumentException("navigation failure, because context is null")
         }
+        verifyRouteTable()
         LHLogKit.i("Route url: $url, params: ${params.toString()}")
         val routeUrl = RouteUrl(url = url, uri = Uri.parse(url.toRouteUrl(routeTable.schemaHost)))
         val currentSchemaHost = "${routeUrl.uri.scheme}://${routeUrl.uri.host}"
@@ -107,6 +110,12 @@ object Navigator {
     private fun buildRouteIntent(context: Context, routeTarget: RouteTarget, params: Bundle): Intent {
         return Intent(context, routeTarget.clazz).apply {
             putExtras(params)
+        }
+    }
+
+    private fun verifyRouteTable() {
+        if (!this::routeTable.isInitialized) {
+            throw IllegalStateException("Please invoke method 'registerRouteTable' to init navigator")
         }
     }
 }

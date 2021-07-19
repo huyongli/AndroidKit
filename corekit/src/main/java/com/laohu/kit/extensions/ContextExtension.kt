@@ -19,6 +19,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import com.laohu.kit.util.handler
 import java.io.File
 
 
@@ -71,13 +72,31 @@ fun Context.getScreenWidth(): Int {
 }
 
 fun Context.versionName(): String {
-    val packageManager = this.packageManager
-    val packageInfo = packageManager.getPackageInfo(packageName, 0)
-    val versionName = packageInfo.versionName
-    return if (versionName.startsWith("v", true)) {
-        versionName.substring(1)
-    } else {
-        versionName
+    return try {
+        val packageInfo = this.packageManager.getPackageInfo(packageName, 0)
+        val versionName = packageInfo.versionName
+        if (versionName.startsWith("v", true)) {
+            versionName.substring(1)
+        } else {
+            versionName
+        }
+    } catch (throwable: Throwable) {
+        throwable.handler()
+        ""
+    }
+}
+
+fun Context.versionCode(): String {
+    return try {
+        val packageInfo = this.packageManager.getPackageInfo(packageName, 0)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            packageInfo.longVersionCode.toString()
+        } else {
+            packageInfo.versionCode.toString()
+        }
+    } catch (throwable: Throwable) {
+        throwable.handler()
+        ""
     }
 }
 

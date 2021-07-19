@@ -1,6 +1,5 @@
 package com.laohu.kit.util
 
-import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
  */
 class RecyclerScrollEndListener(private val onScrollEnd: () -> Unit) :
     RecyclerView.OnScrollListener() {
-    private val TAG = RecyclerScrollEndListener::class.java.simpleName
 
     private val lastItemToLoading = 1
 
@@ -54,7 +52,6 @@ class RecyclerScrollEndListener(private val onScrollEnd: () -> Unit) :
             newState == RecyclerView.SCROLL_STATE_IDLE &&
             lastVisibleItemPosition >= totalItemCount - lastItemToLoading
         ) {
-            Log.i(TAG, "call onScrollEnd; time:${System.currentTimeMillis()}")
             onScrollEnd.invoke()
         }
     }

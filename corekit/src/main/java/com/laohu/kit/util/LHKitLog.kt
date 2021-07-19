@@ -7,7 +7,9 @@ fun Throwable.handler() {
     if (this is CancellationException) {
         return
     }
-    Log.e(TAG, message, this)
+    if (LHLogKit.isEnabled) {
+        Log.e(TAG, message, this)
+    }
 }
 
 typealias LogCallback = (LogType, String) -> Unit
@@ -23,6 +25,9 @@ object LHLogKit {
     private var enabled = true
     private var tag = TAG
     private var logCallback: LogCallback? = null
+
+    val isEnabled: Boolean
+        get() = enabled
 
     fun init(enable: Boolean = true, tag: String = TAG, callback: LogCallback? = null) {
         this.enabled = enable

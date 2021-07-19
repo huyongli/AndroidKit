@@ -19,8 +19,8 @@ object AppCrashHandler {
         }
     }
 
-    fun saveException(context: Context, ex: Throwable?, uncaught: Boolean, snapshotExtras: CrashSnapshotExtrasFactory? = null) {
-        CrashSaver.save(context, ex, uncaught, snapshotExtras?.invoke())
+    fun saveException(context: Context, throwable: Throwable?, uncaught: Boolean, snapshotExtras: CrashSnapshotExtrasFactory? = null) {
+        CrashSaver.save(context, throwable, uncaught, snapshotExtras?.invoke())
     }
 
     fun setUncaughtExceptionHandler(handler: Thread.UncaughtExceptionHandler?) {

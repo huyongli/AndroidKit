@@ -26,7 +26,7 @@ fun Activity?.updateStatusBarColor(@ColorInt color: Int) {
     this?.window?.updateStatusBarColor(color)
 }
 
-private fun Window.updateStatusBarColor(@ColorInt color: Int) {
+fun Window.updateStatusBarColor(@ColorInt color: Int) {
     this.takeIf { Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP }?.apply {
         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -102,7 +102,7 @@ private fun Window.layoutBelowStatusBar() {
     statusBarColor = Color.TRANSPARENT
 }
 
-private fun Window.updateFitsSystemWindow(fitsSystemWindow: Boolean) {
+fun Window.updateFitsSystemWindow(fitsSystemWindow: Boolean) {
     val parent = this.decorView.findViewById<View>(android.R.id.content) as ViewGroup
     var i = 0
     val count = parent.childCount

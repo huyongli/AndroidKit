@@ -59,7 +59,7 @@ fun FragmentActivity.requestPermission(
     permissionFragment.requestPermission(permissionRequest)
 }
 
-fun Fragment.hasPermissions(vararg perms: String) = checkGrantedPermission(this.activity!!, *perms)
+fun Fragment.hasPermissions(vararg perms: String) = checkGrantedPermission(this.requireActivity(), *perms)
 
 fun Fragment.requestPermission(
     vararg perms: String,
@@ -92,7 +92,7 @@ class PermissionFragment : Fragment() {
 
     fun requestPermission(permissionRequest: PermissionRequest) {
         val needRequestPerms = permissionRequest.perms.filter {
-            !checkGrantedPermission(this.activity!!, it)
+            !checkGrantedPermission(this.requireActivity(), it)
         }
         if (needRequestPerms.isEmpty()) {
             permissionRequest.grantedCallback?.invoke()
