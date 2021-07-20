@@ -2,8 +2,11 @@
 buildscript {
     apply from: "dependencies.gradle"
     repositories {
-        mavenCentral()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://jitpack.io' }
         google()
+        mavenCentral()
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.2.2"
@@ -16,8 +19,11 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenCentral()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://jitpack.io' }
         google()
+        mavenCentral()
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
     }
 }
 
