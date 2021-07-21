@@ -19,7 +19,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import com.laohu.kit.util.handler
+import com.laohu.kit.util.log.handler
 import java.io.File
 
 

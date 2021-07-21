@@ -1,4 +1,4 @@
-package com.laohu.kit.util
+package com.laohu.kit.util.log
 
 import android.util.Log
 import kotlinx.coroutines.CancellationException
@@ -12,9 +12,9 @@ fun Throwable.handler() {
     }
 }
 
-typealias LogCallback = (LogType, String) -> Unit
+typealias LogCallback = (LogLevel, String) -> Unit
 
-enum class LogType {
+enum class LogLevel {
     INFO,
     ERROR,
     DEBUG
@@ -38,21 +38,21 @@ object LHLogKit {
     fun i(message: String) {
         if (enabled) {
             Log.i(tag, message)
-            logCallback?.invoke(LogType.INFO, message)
+            logCallback?.invoke(LogLevel.INFO, message)
         }
     }
 
     fun d(message: String) {
         if (enabled) {
             Log.d(tag, message)
-            logCallback?.invoke(LogType.DEBUG, message)
+            logCallback?.invoke(LogLevel.DEBUG, message)
         }
     }
 
     fun e(message: String) {
         if (enabled) {
             Log.e(tag, message)
-            logCallback?.invoke(LogType.ERROR, message)
+            logCallback?.invoke(LogLevel.ERROR, message)
         }
     }
 }

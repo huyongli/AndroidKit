@@ -2,7 +2,7 @@ package com.laohu.kit.extensions
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.laohu.kit.util.handler
+import com.laohu.kit.util.log.handler
 
 val gson = Gson()
 

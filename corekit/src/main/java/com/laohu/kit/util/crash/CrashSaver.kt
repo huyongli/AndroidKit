@@ -55,8 +55,7 @@ object CrashSaver {
             return
         }
         val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val date = Date()
-        val timestamp = sdf.format(date)
+        val timestamp = sdf.format(Date())
         var mBufferedWriter: BufferedWriter? = null
         try {
             val file = File(context.getExternalFilesDir(null), "crash/$filename.log")

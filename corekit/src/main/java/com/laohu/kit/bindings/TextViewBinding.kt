@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.text.getSpans
 import androidx.databinding.BindingAdapter
-import com.laohu.kit.util.LHLogKit
+import com.laohu.kit.util.log.LHLogKit
 
 @BindingAdapter("textOrResource")
 fun TextView.textOrResource(text: Any?) {

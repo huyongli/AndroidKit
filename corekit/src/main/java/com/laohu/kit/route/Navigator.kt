@@ -10,7 +10,7 @@ import com.laohu.kit.BuildConfig
 import com.laohu.kit.extensions.isNotNullOrEmpty
 import com.laohu.kit.extensions.orFalse
 import com.laohu.kit.extensions.requestActivityForResult
-import com.laohu.kit.util.LHLogKit
+import com.laohu.kit.util.log.LHLogKit
 
 typealias StartForResultHandler = (isResultOk: Boolean, data: Intent?) -> Unit
 
